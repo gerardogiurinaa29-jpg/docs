@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Re d'Italia Docs</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2a0b11">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Re d'Italia Docs">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: l'ufficio della maison in tasca, chiaro e immediato.
+   IDEA: un archivio rilegato con sei dorsi, uno per tipo di documento.
+   PICTURE: l'icona con la corona e le sei sezioni come dorsi dorati da scegliere.
+   COLOUR and TYPE: bordeaux, oro, avorio; Cormorant Garamond per i titoli, Manrope per il resto.
+   LAYOUT: intestazione compatta, sei dorsi in griglia, elenco documenti sotto, guida di installazione in fondo. */
+:root{color-scheme:dark;--bg:#1a070b;--card:#2a0d13;--line:rgba(232,191,98,.28);--gold:#e8bf62;--gold2:#f6dc98;--ink:#f3ead8;--soft:#cdb9a0}
+*{box-sizing:border-box;min-width:0}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -10%,#5a1420 0%,#2a0b11 45%,#12050a 100%) fixed,var(--bg);color:var(--ink);font:17px/1.55 Manrope,system-ui,sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.wrap{max-width:980px;margin:0 auto;padding:22px 16px 48px}
+.top{display:flex;align-items:center;gap:14px}
+.top img{width:64px;height:64px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.5),0 0 0 1px rgba(232,191,98,.35)}
+h1{font:600 clamp(30px,6vw,42px)/1.05 "Cormorant Garamond",Georgia,serif;margin:0;color:var(--gold2)}
+.by{font:italic 500 18px/1.3 "Cormorant Garamond",Georgia,serif;color:var(--soft);margin:2px 0 0}
+.spines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0 14px}
+.spine{min-height:76px;padding:12px 12px;border:1px solid var(--line);border-radius:14px;background:rgba(0,0,0,.25);color:var(--ink);font:600 15px/1.25 Manrope,sans-serif;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:4px}
+.spine b{font:600 22px/1.05 "Cormorant Garamond",Georgia,serif;color:var(--gold2)}
+.spine span{font-size:13px;color:var(--soft);font-weight:500}
+.spine[aria-selected=true]{background:linear-gradient(180deg,rgba(232,191,98,.22),rgba(232,191,98,.06));border-color:var(--gold)}
+.spine:focus-visible,.btn:focus-visible,.tab:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
+.shelf{background:#fbf6ec;border-radius:16px;overflow:hidden;border:1px solid var(--gold)}
+.shelf iframe{display:block;width:100%;height:min(62vh,560px);border:0;background:#fbf6ec}
+.bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin:10px 0 0}
+.bar p{margin:0;font-size:14px;color:var(--soft)}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border-radius:12px;background:linear-gradient(180deg,#f6e0a0,#d2a650 55%,#b08333);color:#1f0a0e;font:700 15px Manrope,sans-serif;text-decoration:none}
+.tip{margin:14px 0 0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(0,0,0,.2);font-size:15px}
+.orn{display:flex;align-items:center;justify-content:center;gap:10px;margin:34px 0 20px}
+.orn i{height:1px;width:90px;background:linear-gradient(90deg,transparent,var(--gold))}.orn i:last-child{transform:scaleX(-1)}
+.orn b{width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+h2{font:600 30px/1.1 "Cormorant Garamond",Georgia,serif;color:var(--gold2);text-align:center;margin:0 0 6px}
+.lead{text-align:center;color:var(--soft);margin:0 0 16px;font-size:15px}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;max-width:620px;margin:0 auto}
+.tab{min-height:46px;padding:8px 4px;border:1px solid var(--line);border-bottom:0;border-radius:12px 12px 0 0;background:rgba(0,0,0,.25);color:var(--soft);font:600 14px Manrope,sans-serif;cursor:pointer}
+.tab[aria-selected=true]{background:var(--card);color:var(--gold2);border-color:var(--gold)}
+.panel{max-width:620px;margin:0 auto;background:var(--card);border:1px solid var(--gold);border-radius:0 0 16px 16px;padding:18px 16px 6px}
+ol{list-style:none;counter-reset:s;margin:0;padding:0}
+ol li{counter-increment:s;position:relative;padding:0 0 16px 46px}
+ol li:before{content:counter(s);position:absolute;left:0;top:-2px;width:32px;height:32px;border-radius:50%;background:var(--gold);color:#1f0a0e;font:700 16px/32px Manrope,sans-serif;text-align:center}
+ol li b{color:var(--gold2)}
+.foot{text-align:center;font:italic 500 17px "Cormorant Garamond",Georgia,serif;color:var(--soft);margin-top:28px}
+.app-mode .install{display:none}
+@media(max-width:600px){.spines{grid-template-columns:repeat(2,minmax(0,1fr))}.tab{font-size:12px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+ <header class="top">
+  <img src="icon-192.png" alt="Icona Re d'Italia Docs">
+  <div><h1>Re d'Italia Docs</h1><p class="by">L’ufficio della maison, sempre con te</p></div>
+ </header>
+
+ <div class="spines" role="tablist" id="spines"></div>
+ <div class="shelf"><iframe id="frame" title="Documenti" loading="lazy"></iframe></div>
+ <div class="bar"><p id="hint">Tocca un documento per aprirlo, poi scaricalo o stampalo.</p><a class="btn" id="open" target="_blank" rel="noopener" href="#">Apri la cartella su Drive ↗</a></div>
+ <p class="tip">🖨️ <b>Per stampare:</b> apri il documento → icona <b>Scarica</b> o menu <b>⋮</b> → <b>Stampa</b>. Su iPhone: <b>Condividi ⬆️ → Stampa</b>.</p>
+
+ <section class="install">
+  <div class="orn"><i></i><b></b><i></i></div>
+  <h2>Installa l’app in 1 minuto</h2>
+  <p class="lead">Abbiamo già selezionato il dispositivo che stai usando.</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="panel" role="tabpanel" id="panel"></div>
+ </section>
+ <p class="foot">M&amp;M Re d’Italia Art · Arte Italia Nostra 2026/2027</p>
+</main>
+<script>
+{
+const ROOT="1if7QeoBv5gIhnFW1xD6KmKB3NYvzoiEg";
+const C=[
+ {t:"Schede tecniche",s:"Da far firmare al cliente",id:"11g2MIFojN7oRI5Zock-OrUYuzc5hqYLI"},
+ {t:"Depliant opere",s:"Da consegnare e ristampare",id:"1VeSRM_OWhH4CkkyUe8uKS_ML2N9-SwMb"},
+ {t:"Approfondimenti",s:"I libretti delle opere",id:"1hq2YVq-z_rbTBS9-9GcXczskYkmnPSrc"},
+ {t:"Metodologie di vendita",s:"Analitica e sintetica",id:"1gBWqyt8-oXubmd58SIi_5uoIN5_BY9nC"},
+ {t:"Dispense tecniche",s:"Per prepararsi all’incontro",id:"1CpstZyncIzS_MQWMrNt1nMm-s_nn8DDB"},
+ {t:"Rassegna stampa",s:"Dicono di noi",id:"1t_iMMNDhAhvNDIhP-Ndi1iAUxNozNbzE"}
+];
+const sp=document.getElementById("spines"),fr=document.getElementById("frame"),op=document.getElementById("open");
+sp.innerHTML=C.map((c,i)=>`<button class="spine" role="tab" data-i="${i}" aria-selected="false"><b>${c.t}</b><span>${c.s}</span></button>`).join("");
+const pick=i=>{sp.querySelectorAll(".spine").forEach(b=>b.setAttribute("aria-selected",String(+b.dataset.i===i)));fr.src="https://drive.google.com/embeddedfolderview?id="+C[i].id+"#list";op.href="https://drive.google.com/drive/folders/"+C[i].id;try{localStorage.setItem("rdi-docs",i)}catch(e){}};
+sp.addEventListener("click",e=>{const b=e.target.closest(".spine");if(b)pick(+b.dataset.i)});
+let start=0;try{start=+localStorage.getItem("rdi-docs")||0}catch(e){}pick(Math.min(start,C.length-1));
+const share='<span style="white-space:nowrap">Condividi ⬆️</span>';
+const D=[
+ {t:"iPhone",s:["Apri questa pagina con <b>Safari</b>.","Tocca <b>"+share+"</b> in basso al centro.","Tocca <b>Aggiungi alla schermata Home</b>.","Tocca <b>Aggiungi</b> ✅"]},
+ {t:"Android",s:["Apri questa pagina con <b>Chrome</b>.","Tocca i tre puntini <b>⋮</b> in alto a destra.","Tocca <b>Aggiungi a schermata Home</b> (o <b>Installa app</b>).","Conferma con <b>Installa</b> ✅"]},
+ {t:"Windows",s:["Apri questa pagina con <b>Chrome</b> o <b>Edge</b>.","Chrome: <b>⋮</b> → <b>Trasmetti, salva e condividi</b> → <b>Installa pagina come app</b>.","Edge: <b>···</b> → <b>App</b> → <b>Installa questo sito come app</b> ✅"]},
+ {t:"Mac",s:["Safari: menu <b>File</b> → <b>Aggiungi al Dock</b> → <b>Aggiungi</b>.","Chrome: <b>⋮</b> → <b>Trasmetti, salva e condividi</b> → <b>Installa pagina come app</b> ✅"]}
+];
+const ua=navigator.userAgent,pl=navigator.platform||"";
+const ios=/iPhone|iPad|iPod/.test(ua)||(pl==="MacIntel"&&navigator.maxTouchPoints>1);
+const tb=document.getElementById("tabs"),pn=document.getElementById("panel");
+tb.innerHTML=D.map((d,i)=>`<button class="tab" role="tab" data-i="${i}" aria-selected="false">${d.t}</button>`).join("");
+const show=i=>{tb.querySelectorAll(".tab").forEach(b=>b.setAttribute("aria-selected",String(+b.dataset.i===i)));pn.innerHTML="<ol>"+D[i].s.map(x=>"<li>"+x+"</li>").join("")+"</ol>"};
+tb.addEventListener("click",e=>{const b=e.target.closest(".tab");if(b)show(+b.dataset.i)});
+show(ios?0:/Android/.test(ua)?1:/Mac/.test(pl)?3:2);
+if(navigator.standalone===true||(window.matchMedia&&matchMedia("(display-mode: standalone)").matches))document.documentElement.classList.add("app-mode");
+}
+</script>
+</body>
+</html>
