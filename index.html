@@ -68,7 +68,7 @@ ol li b{color:var(--gold2)}
  </header>
 
  <div class="spines" role="tablist" id="spines"></div>
- <div class="shelf"><iframe id="frame" title="Documenti" loading="lazy"></iframe></div>
+ <div class="shelf"><iframe id="frame" title="Documenti" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
  <div class="bar"><p id="hint">Tocca un documento per aprirlo, poi scaricalo o stampalo.</p><a class="btn" id="open" target="_blank" rel="noopener" href="#">Apri la cartella su Drive ↗</a></div>
  <p class="tip">🖨️ <b>Per stampare:</b> apri il documento → icona <b>Scarica</b> o menu <b>⋮</b> → <b>Stampa</b>. Su iPhone: <b>Condividi ⬆️ → Stampa</b>.</p>
 
@@ -91,12 +91,12 @@ const C=[
  {t:"Metodologie di vendita",s:"Analitica e sintetica",id:"1gBWqyt8-oXubmd58SIi_5uoIN5_BY9nC"},
  {t:"Dispense tecniche",s:"Per prepararsi all’incontro",id:"1CpstZyncIzS_MQWMrNt1nMm-s_nn8DDB"},
  {t:"Rassegna stampa",s:"Dicono di noi",id:"1t_iMMNDhAhvNDIhP-Ndi1iAUxNozNbzE"},
- {t:"Video opere",s:"Da mostrare ai clienti",id:"1E0BjARhu6RmoGQrMQdddq0yRm772vGL9"},
+ {t:"Video opere",s:"Icones Bibliae con musica",id:"1E0BjARhu6RmoGQrMQdddq0yRm772vGL9",url:"https://trilogia-universalis.netlify.app/video-icones/"},
  {t:"Spagna Docs",s:"Documentos en español",id:"1lS293tgVNBWT6fjTNSTvJxHBus2hkz8R"}
 ];
 const sp=document.getElementById("spines"),fr=document.getElementById("frame"),op=document.getElementById("open");
 sp.innerHTML=C.map((c,i)=>`<button class="spine" role="tab" data-i="${i}" aria-selected="false"><b>${c.t}</b><span>${c.s}</span></button>`).join("");
-const pick=i=>{sp.querySelectorAll(".spine").forEach(b=>b.setAttribute("aria-selected",String(+b.dataset.i===i)));fr.src="https://drive.google.com/embeddedfolderview?id="+C[i].id+"#list";op.href="https://drive.google.com/drive/folders/"+C[i].id;try{localStorage.setItem("rdi-docs",i)}catch(e){}};
+const pick=i=>{sp.querySelectorAll(".spine").forEach(b=>b.setAttribute("aria-selected",String(+b.dataset.i===i)));fr.src=C[i].url||("https://drive.google.com/embeddedfolderview?id="+C[i].id+"#list");op.href=C[i].url||("https://drive.google.com/drive/folders/"+C[i].id);op.textContent=C[i].url?"Apri il video a schermo intero ↗":"Apri la cartella su Drive ↗";try{localStorage.setItem("rdi-docs",i)}catch(e){}};
 sp.addEventListener("click",e=>{const b=e.target.closest(".spine");if(b)pick(+b.dataset.i)});
 let start=0;try{start=+localStorage.getItem("rdi-docs")||0}catch(e){}pick(Math.min(start,C.length-1));
 const share='<span style="white-space:nowrap">Condividi ⬆️</span>';
