@@ -17,10 +17,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /* VOICE: l'ufficio della maison in tasca, chiaro e immediato.
-   IDEA: un archivio rilegato con sei dorsi, uno per tipo di documento.
-   PICTURE: l'icona con la corona e le sei sezioni come dorsi dorati da scegliere.
+   IDEA: un archivio rilegato con sette dorsi, uno per tipo di documento.
+   PICTURE: l'icona con la corona e le sette sezioni come dorsi dorati da scegliere.
    COLOUR and TYPE: bordeaux, oro, avorio; Cormorant Garamond per i titoli, Manrope per il resto.
-   LAYOUT: intestazione compatta, sei dorsi in griglia, elenco documenti sotto, guida di installazione in fondo. */
+   LAYOUT: intestazione compatta, sette dorsi in griglia, elenco documenti sotto, guida di installazione in fondo. */
 :root{color-scheme:dark;--bg:#1a070b;--card:#2a0d13;--line:rgba(232,191,98,.28);--gold:#e8bf62;--gold2:#f6dc98;--ink:#f3ead8;--soft:#cdb9a0}
 *{box-sizing:border-box;min-width:0}
 html{-webkit-text-size-adjust:100%}
@@ -90,7 +90,8 @@ const C=[
  {t:"Approfondimenti",s:"I libretti delle opere",id:"1hq2YVq-z_rbTBS9-9GcXczskYkmnPSrc"},
  {t:"Metodologie di vendita",s:"Analitica e sintetica",id:"1gBWqyt8-oXubmd58SIi_5uoIN5_BY9nC"},
  {t:"Dispense tecniche",s:"Per prepararsi all’incontro",id:"1CpstZyncIzS_MQWMrNt1nMm-s_nn8DDB"},
- {t:"Rassegna stampa",s:"Dicono di noi",id:"1t_iMMNDhAhvNDIhP-Ndi1iAUxNozNbzE"}
+ {t:"Rassegna stampa",s:"Dicono di noi",id:"1t_iMMNDhAhvNDIhP-Ndi1iAUxNozNbzE"},
+ {t:"Spagna Docs",s:"Documentos en español",id:"1lS293tgVNBWT6fjTNSTvJxHBus2hkz8R"}
 ];
 const sp=document.getElementById("spines"),fr=document.getElementById("frame"),op=document.getElementById("open");
 sp.innerHTML=C.map((c,i)=>`<button class="spine" role="tab" data-i="${i}" aria-selected="false"><b>${c.t}</b><span>${c.s}</span></button>`).join("");
