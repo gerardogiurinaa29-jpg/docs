@@ -1,0 +1,33 @@
+name: Importa invito da Netlify
+on:
+  push:
+    paths: ['.github/workflows/importa-invito.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  importa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scarica le pagine e i file
+        run: |
+          B=https://trilogia-universalis.netlify.app
+          for f in index.html crm/index.html crm/crm.mp4 crm/poster.jpg video-icones/index.html video/teaser.mp4 \
+                   img/divina.jpg img/divina2.jpg img/divina3.jpg img/icones.jpg img/icones2.jpg img/icones3.jpg \
+                   img/leonardo.jpg img/leonardo2.jpg img/leonardo3.jpg img/logo.png img/poster.jpg; do
+            mkdir -p "invito/$(dirname "$f")"
+            curl -fsSL --retry 3 "$B/$f" -o "invito/$f"
+          done
+          for h in invito/index.html invito/crm/index.html invito/video-icones/index.html; do
+            perl -0pi -e 's/<!-- This site is hosted on Netlify.*?-->\n//s; s/<script async src="\/\.netlify\/scripts\/ar"[^>]*><\/script>\n?//g' "$h"
+          done
+          find invito -type f -exec sha256sum {} \; | sort -k2
+          find invito -type f -exec stat -c '%s %n' {} \; | sort -k2
+      - name: Salva nel repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add invito
+          git commit -m "Copia di sicurezza dell'invito (da Netlify)" || echo "nessuna modifica"
+          git push
