@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Icones Bibliae · M&amp;M Re d'Italia Art</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Pinyon+Script&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:#0b0606;color:#efe4cc;font-family:'Cormorant Garamond',Georgia,serif}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:16px;
+ background:radial-gradient(ellipse at 50% 40%,#3a1214 0%,#120708 60%,#070404 100%)}
+.stage{position:relative;height:min(86vh,1100px);aspect-ratio:9/16;max-width:94vw;border:2px solid #c9a35a;outline:1px solid #6e5223;outline-offset:6px;background:#000;overflow:hidden}
+.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+.brand{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 16px;text-align:center;
+ background:linear-gradient(to top,rgba(10,4,4,.92),rgba(10,4,4,.55) 60%,transparent);pointer-events:none}
+.brand .s{font-family:'Pinyon Script',cursive;font-size:clamp(26px,4.6vh,46px);color:#e8c77c;text-shadow:0 2px 6px #000}
+.brand .t{font-family:'Cinzel',serif;font-size:clamp(11px,1.5vh,15px);letter-spacing:.12em;color:#efe4cc;margin-top:2px}
+.top{position:absolute;left:0;right:0;top:0;padding:14px;text-align:center;font-family:'Cinzel',serif;font-size:clamp(13px,1.9vh,19px);color:#e8c77c;
+ background:linear-gradient(to bottom,rgba(10,4,4,.85),transparent);pointer-events:none}
+.cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:rgba(8,3,3,.86);cursor:pointer;text-align:center;padding:20px}
+.cover .s{font-family:'Pinyon Script',cursive;font-size:clamp(34px,6vh,60px);color:#e8c77c}
+.cover button{font-family:'Cinzel',serif;font-size:18px;color:#1a0b05;background:#e1bd6e;border:0;padding:14px 26px;cursor:pointer}
+.bar{margin-top:14px;display:flex;gap:10px}
+.bar button{font-family:'Cinzel',serif;font-size:13px;color:#e8c77c;background:transparent;border:1px solid #8a6a32;padding:8px 14px;cursor:pointer}
+.credit{margin-top:8px;font-size:12px;color:#9b8a6c}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div id="yt"></div>
+  <div class="top">Icones Bibliae · La Bibbia della speranza</div>
+  <div class="brand"><div class="s">M&amp;M Re d'Italia Art</div><div class="t">TRILOGIA UNIVERSALIS · FEDE</div></div>
+  <div class="cover" id="cover"><div class="s">M&amp;M Re d'Italia Art</div><div>presenta</div><button id="play">▶ Guarda il video</button></div>
+</div>
+<div class="bar"><button id="again">↺ Ricomincia</button><button id="full">⛶ Schermo intero</button></div>
+<div class="credit">Video: Imago · uso interno</div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+{
+let player, ready=false;
+
+const Music=(()=>{let ctx,master;
+const hz=m=>440*Math.pow(2,(m-69)/12);
+function init(){ctx=new (window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=.5;
+ const L=Math.floor(1.6*ctx.sampleRate),b=ctx.createBuffer(2,L,ctx.sampleRate);
+ for(let c=0;c<2;c++){const d=b.getChannelData(c);for(let i=0;i<L;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/ctx.sampleRate/.4);}
+ const rv=ctx.createConvolver();rv.buffer=b;const w=ctx.createGain();w.gain.value=.28;rv.connect(w).connect(ctx.destination);master.connect(ctx.destination);master.connect(rv);}
+function vln(m,t,d,a){const o=ctx.createOscillator(),f=ctx.createBiquadFilter(),g=ctx.createGain(),v=ctx.createOscillator(),vg=ctx.createGain();
+ o.type='sawtooth';o.frequency.value=hz(m);f.type='lowpass';f.frequency.value=Math.min(hz(m)*4,9000);v.frequency.value=5.6;vg.gain.value=hz(m)*.004;v.connect(vg).connect(o.frequency);
+ g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(a,t+.03);g.gain.setValueAtTime(a*.85,t+Math.max(d-.05,.04));g.gain.linearRampToValueAtTime(0,t+d+.06);
+ o.connect(f).connect(g).connect(master);o.start(t);v.start(t);o.stop(t+d+.1);v.stop(t+d+.1);}
+function hpsi(m,t,a){const o=ctx.createOscillator(),g=ctx.createGain();o.type='square';o.frequency.value=hz(m);const f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=2500;
+ g.gain.setValueAtTime(a,t);g.gain.exponentialRampToValueAtTime(.0001,t+.5);o.connect(f).connect(g).connect(master);o.start(t);o.stop(t+.55);}
+// Bach – Jesus bleibet meine Freude (BWV 147), versione strumentale sintetizzata
+const MEL=[[1,1,67],[2,1,69],[3,1,71],[4,1,74],[5,1,72],[6,1,72],[7,1,76],[8,1,74],[9,1,74],[10,1,79],[11,1,78],[12,1,79],[13,1,74],[14,1,71],[15,1,67],[16,1,69],[17,1,71],[18,1,72],[19,1,74],[20,1,76],[21,1,74],[22,1,72],[23,1,71],[24,1,69],[25,1,71],[26,1,67],[27,1,66],[28,1,67],[29,1,69],[30,1,62],[31,1,66],[32,1,69],[33,1,72],[34,1,71],[35,1,69],[36,1,71],[37,1,67],[38,1,69],[39,1,71],[40,1,74],[41,1,72],[42,1,72],[43,1,76],[44,1,74],[45,1,74],[46,1,79],[47,1,78],[48,1,79],[49,1,74],[50,1,71],[51,1,67],[52,1,69],[53,1,71],[54,1,64],[55,1,74],[56,1,72],[57,1,71],[58,1,69],[59,1,67],[60,1,62],[61,1,67],[62,1,66],[63,1,67],[64,1,71],[65,1,74],[66,1,79],[67,1,74],[68,1,71],[69,1,67],[70,1,71],[71,1,74],[72,3,79],[75,3,71],[78,3,72],[81,6,74],[87,3,74],[90,6,72],[96,3,71],[99,1,69],[100,1,62],[101,1,64],[102,1,66],[103,1,69],[104,1,67],[105,1,69],[106,1,72],[107,1,71],[108,1,72],[109,1,69],[110,1,66],[111,1,62],[112,1,66],[113,1,69],[114,1,72],[115,1,71],[116,1,69],[117,1,71],[118,1,67],[119,1,69],[120,1,71],[121,1,74],[122,1,72],[123,1,72],[124,1,76],[125,1,74],[126,1,74],[127,1,79],[128,1,78],[129,1,79],[130,1,74],[131,1,71],[132,1,67],[133,1,69],[134,1,71],[135,1,64],[136,1,74],[137,1,72],[138,1,71],[139,1,69],[140,1,67],[141,1,62],[142,1,67],[143,1,66],[144,7,67]];
+const CHS="G G C G G G C G D D D D7 G G C G G G C G D G G G G Em C G G D C D G D D D7 D7 D D7 G G C G G G C G D G".split(' ');
+const CH={G:[43,[67,71,74]],C:[48,[67,72,76]],D:[50,[66,69,74]],D7:[50,[66,72,74]],Em:[40,[67,71,76]],Am:[45,[69,72,76]]};
+function play(){if(!ctx)init();ctx.resume();master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(.5,ctx.currentTime);
+ const U=.3,T0=ctx.currentTime+.15;
+ MEL.forEach(([u,d,m])=>{vln(m,T0+u*U,d*U*.93,.075);if(u>=72&&u<99)vln(m-12,T0+u*U,d*U*.93,.035);});
+ CHS.forEach((c,i)=>{const h=CH[c],s=T0+i*3*U,last=i===CHS.length-1,L=last?9:3;
+   vln(h[0],s,L*U*.92,.055);vln(h[0]+12,s+1.5*U,1.4*U,last?0:.02);
+   h[1].forEach((m,k)=>hpsi(m-12,s+k*.012,(i%3===0||last)?.02:.012));
+   h[1].forEach(m=>vln(m-12,s,L*U*.97,.011));});
+ const e=T0+(CHS.length-1)*3*U;
+ master.gain.setValueAtTime(.5,e+.6);master.gain.linearRampToValueAtTime(0,e+2.8);}
+function stop(){if(ctx){master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(0,ctx.currentTime);ctx.close();ctx=null;}}
+return {play,stop};})();
+
+window.onYouTubeIframeAPIReady=function(){
+  player=new YT.Player('yt',{videoId:'U9TrTAOZ2WU',
+    playerVars:{controls:0,modestbranding:1,rel:0,playsinline:1,mute:1,loop:1,playlist:'U9TrTAOZ2WU',iv_load_policy:3,disablekb:1},
+    events:{onReady:()=>{ready=true;player.mute();},
+            onStateChange:e=>{if(e.data===YT.PlayerState.ENDED){player.seekTo(0);player.playVideo();}}}});
+};
+function start(){
+  document.getElementById('cover').style.display='none';
+  Music.stop(); Music.play();
+  if(ready){player.mute();player.seekTo(0);player.playVideo();}
+}
+document.getElementById('play').addEventListener('click',start);
+document.getElementById('cover').addEventListener('click',start);
+document.getElementById('again').addEventListener('click',start);
+document.getElementById('full').addEventListener('click',()=>{const s=document.getElementById('stage');(s.requestFullscreen||s.webkitRequestFullscreen||function(){}).call(s);});
+}
+</script>
+</body>
+</html>

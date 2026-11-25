@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trilogia Universalis · Invito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+/* VOICE: formale, solenne, come un invito di casa d'aste per una serata riservata.
+   IDEA: un biglietto d'invito stampato in oro su cartoncino nero, con le tre opere come tavole incorniciate.
+   PICTURE: le tre opere in cornici dorate che si accendono una dopo l'altra.
+   COLOUR and TYPE: nero d'inchiostro, oro brunito, avorio; Pinyon Script per i titoli, Cormorant Garamond per i testi.
+   LAYOUT: una colonna centrata come un cartoncino; dettagli dell'incontro, opere, raccomandazioni, modulo di conferma. */
+:root{color-scheme:dark;--bg:#0b0806;--card:#140f0b;--ink:#efe6d2;--soft:#c9b78f;--gold:#d9b15f;--gold2:#f4dc9a;--gold3:#8f6a28;--line:rgba(217,177,95,.35)}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 50% 0%,#2a1e13 0%,#100b08 45%,#070504 100%) fixed,var(--bg);color:var(--ink);font:18px/1.55 "Cormorant Garamond",Georgia,serif;overflow-x:clip}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(18px,4vw,40px) clamp(14px,4vw,28px) 60px}
+.card{position:relative;border:1px solid var(--line);padding:clamp(26px,5vw,54px) clamp(18px,5vw,52px);background:linear-gradient(180deg,rgba(255,255,255,.015),rgba(0,0,0,.25))}
+.card:before{content:"";position:absolute;inset:7px;border:1px solid rgba(217,177,95,.18);pointer-events:none}
+.corner{position:absolute;width:34px;height:34px;border:1.5px solid var(--gold);pointer-events:none}
+.corner.tl{top:-1px;left:-1px;border-right:0;border-bottom:0}.corner.tr{top:-1px;right:-1px;border-left:0;border-bottom:0}
+.corner.bl{bottom:-1px;left:-1px;border-right:0;border-top:0}.corner.br{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.c{text-align:center}
+.logo{display:block;width:min(210px,58%);margin:0 auto 6px}
+.from{color:var(--soft);font-style:italic;font-size:19px;margin:10px 0 0}
+.script{font-family:"Pinyon Script",cursive;font-weight:400;line-height:1.05;margin:0;color:var(--gold);text-wrap:balance}
+h1.script{font-size:clamp(44px,11vw,76px);margin-top:6px}
+h1.script span{display:inline-block;background:linear-gradient(100deg,#a87b2e 0%,#f6e2a4 22%,#c99a45 40%,#fff1c6 52%,#b8863a 70%,#f0d28a 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 16s ease-in-out infinite}
+@keyframes shine{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+.season{font-size:20px;letter-spacing:.08em;color:var(--gold2);margin:4px 0 0}
+.orn{display:flex;align-items:center;justify-content:center;gap:10px;margin:22px auto;color:var(--gold)}
+.orn i{display:block;height:1px;width:min(120px,26vw);background:linear-gradient(90deg,transparent,var(--gold))}.orn i:last-child{transform:scaleX(-1)}
+.orn b{width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
+.lead{font-size:20px;max-width:34em;margin:0 auto;text-wrap:pretty}
+.lead strong{color:var(--gold2);font-weight:600}
+.when{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:26px 0 8px}
+.when div{background:var(--card);padding:14px 8px;text-align:center}
+.when small{display:block;font-size:14px;color:var(--soft);font-style:italic}
+.when span{display:block;font-size:24px;color:var(--gold2);font-weight:600;white-space:nowrap}
+h1.caps{font:600 clamp(40px,10vw,68px)/1.02 "Cinzel","Cormorant Garamond",serif;letter-spacing:.08em;margin:14px 0 0;text-transform:uppercase}
+h1.caps span{display:inline-block;background:linear-gradient(100deg,#a87b2e 0%,#f6e2a4 22%,#c99a45 40%,#fff1c6 52%,#b8863a 70%,#f0d28a 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 16s ease-in-out infinite}
+.pillars{font-size:22px;font-style:italic;color:var(--gold2);margin:8px 0 0;letter-spacing:.04em}
+.motto{font-family:"Pinyon Script",cursive;font-size:clamp(26px,6vw,34px);line-height:1.2;color:var(--gold);margin:0 auto 14px;max-width:20em;text-wrap:balance}
+.vid{margin:24px auto 0;max-width:340px;padding:5px;background:linear-gradient(135deg,#f6dc8e,#a8792c 30%,#fbe7a6 50%,#8a5f20 75%,#e9c672);box-shadow:0 12px 30px rgba(0,0,0,.6)}
+.vid video{display:block;width:100%;aspect-ratio:9/16;background:#000}
+.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:18px 0 0}
+.tab{min-height:84px;padding:12px 6px 10px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;border:1px solid var(--line);background:#0e0a07;color:var(--soft);cursor:pointer;font:500 15px/1.2 "Cormorant Garamond",serif;transition:all .3s}
+.tab b{display:inline-block;padding-bottom:4px;border-bottom:2px solid var(--gold);font:600 clamp(16px,4.2vw,21px)/1.15 "Cinzel","Cormorant Garamond",serif;letter-spacing:.06em;color:var(--gold)}
+.tab em{display:block;font-size:clamp(14px,3.6vw,16px);line-height:1.2;font-style:italic;text-wrap:balance}
+.tab[aria-selected=true]{background:linear-gradient(180deg,rgba(217,177,95,.22),rgba(217,177,95,.06));border-color:var(--gold);color:var(--ink)}
+.tab:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.panel{border:1px solid var(--line);border-top:0;padding:22px clamp(14px,3vw,26px);text-align:left;animation:pop .5s ease}
+.gal{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:10px}
+.gal .main{padding:5px;background:linear-gradient(135deg,#f6dc8e,#a8792c 30%,#fbe7a6 50%,#8a5f20 75%,#e9c672)}
+.gal .main div{position:relative;overflow:hidden;aspect-ratio:4/5;background:#000}
+.gal .main img{width:100%;height:100%;object-fit:cover;display:block;animation:drift 30s ease-in-out infinite alternate}
+.gal .main div:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,240,200,.14) 50%,transparent 65%);background-size:250% 100%;animation:sweep 11s ease-in-out infinite}
+@keyframes sweep{0%{background-position:150% 0}60%,100%{background-position:-60% 0}}
+.thumbs{display:grid;gap:10px;align-content:start}
+.thumbs button{padding:0;border:1px solid var(--line);background:#000;cursor:pointer;aspect-ratio:4/3;overflow:hidden;min-height:44px}
+.thumbs button[aria-pressed=true]{border-color:var(--gold2);box-shadow:0 0 0 1px var(--gold2)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85}
+.panel h3{font-family:"Pinyon Script",cursive;font-weight:400;color:var(--gold);font-size:clamp(32px,7vw,42px);line-height:1.1;margin:18px 0 0}
+.pk{text-decoration:none;border-bottom:2px solid var(--gold2);padding-bottom:2px}
+.panel .sub{font-style:italic;color:var(--soft);margin:2px 0 10px}
+.panel p{margin:0 0 10px}
+.panel .story{border-left:2px solid var(--gold);padding-left:14px;font-style:italic;color:var(--gold2)}
+.panel ul{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 18px}
+.panel li{position:relative;padding:4px 0 4px 18px;font-size:16px}
+.panel li:before{content:"";position:absolute;left:2px;top:12px;width:6px;height:6px;background:var(--gold);transform:rotate(45deg)}
+.panel .mus{margin-top:12px;color:var(--gold2);font-size:16px}
+@media(max-width:600px){.panel ul{grid-template-columns:minmax(0,1fr)}.gal{grid-template-columns:minmax(0,1fr)}.thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.count{font-size:16px;color:var(--soft);font-style:italic;min-height:1.6em;margin-top:6px}
+h2.script{font-size:clamp(36px,8vw,50px);margin:6px 0 4px}
+.works{display:grid;gap:26px;margin-top:18px}
+.work{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:22px;align-items:center;opacity:0;transform:translateY(18px);transition:opacity 1s ease,transform 1s ease}
+.work.on{opacity:1;transform:none}
+.frame{padding:5px;background:linear-gradient(135deg,#f6dc8e,#a8792c 30%,#fbe7a6 50%,#8a5f20 75%,#e9c672);box-shadow:0 10px 26px rgba(0,0,0,.6)}
+.frame div{padding:2px;background:#000;overflow:hidden;aspect-ratio:4/5}
+.frame img{display:block;width:100%;height:100%;object-fit:cover;animation:drift 30s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+.work h3{font-family:"Pinyon Script",cursive;font-weight:400;color:var(--gold);font-size:34px;line-height:1.1;margin:0}
+.work .sub{font-style:italic;color:var(--soft);font-size:17px;margin:2px 0 8px}
+.work p{margin:0;font-size:17px}
+.work .meta{margin-top:8px;font-size:15px;color:var(--gold2)}
+.crm{margin-top:30px;border:1px solid var(--line);padding:18px 20px;text-align:center;background:rgba(217,177,95,.05)}
+.crm b{display:block;font-family:"Pinyon Script",cursive;font-weight:400;font-size:32px;color:var(--gold);line-height:1.1}
+.zoom{margin-top:6px;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:12px 26px;border:0;border-radius:2px;font:600 18px/1.2 "Cormorant Garamond",serif;letter-spacing:.03em;color:#1a1208;background:linear-gradient(180deg,#f6e0a0,#d2a650 55%,#b08333);box-shadow:0 6px 18px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.5);text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.06)}.btn:focus-visible,input:focus-visible,.ghost:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.ghost{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:1px solid var(--line);background:transparent;color:var(--gold2);font:500 16px/1.2 "Cormorant Garamond",serif;text-decoration:none;cursor:pointer}
+.ids{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 24px;margin:16px 0 4px;font-size:17px}
+.ids span{white-space:nowrap}.ids b{color:var(--gold2);font-weight:600;letter-spacing:.04em}
+.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
+.notes{list-style:none;padding:0;margin:14px auto 0;max-width:34em;text-align:left}
+.notes li{position:relative;padding:8px 0 8px 30px;border-bottom:1px solid rgba(217,177,95,.18);font-size:18px}
+.notes li:last-child{border-bottom:0}
+.notes li:before{content:"";position:absolute;left:6px;top:17px;width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+form{max-width:470px;margin:14px auto 0;display:grid;gap:14px;text-align:left}
+label.f{display:grid;gap:4px;font-size:16px;color:var(--soft)}
+input[type=text]{width:100%;min-height:48px;padding:10px 14px;font:18px "Cormorant Garamond",serif;color:var(--ink);background:#0d0a07;border:1px solid var(--line);border-radius:2px}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:17px;cursor:pointer;padding:4px 0}
+.check input{appearance:none;flex:none;width:26px;height:26px;margin:1px 0 0;border:1.5px solid var(--gold);background:#0d0a07;display:grid;place-content:center;cursor:pointer}
+.check input:checked{background:var(--gold)}
+.check input:checked:after{content:"";width:7px;height:13px;border:solid #140f0b;border-width:0 3px 3px 0;transform:translateY(-2px) rotate(45deg)}
+.err{color:#f0a08a;font-size:16px;min-height:1.2em;margin:0}
+.done{display:none;text-align:center;border:1px solid var(--gold);padding:22px 18px;margin:16px auto 0;max-width:470px;background:rgba(217,177,95,.07)}
+.done.on{display:block;animation:pop .6s ease}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.done p{margin:6px 0}
+.foot{text-align:center;color:var(--soft);font-size:15px;margin-top:30px;font-style:italic}
+.fade{opacity:0;animation:fadeup 1.2s ease forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.5s}.d3{animation-delay:.9s}.d4{animation-delay:1.3s}.d5{animation-delay:1.7s}
+@keyframes fadeup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:600px){body{font-size:17px}.work{grid-template-columns:minmax(0,1fr);gap:14px;text-align:center}.work .frame{max-width:260px;margin:0 auto}.when span{font-size:20px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.fade,.work{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<main class="card">
+ <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+
+ <header class="c">
+  <img class="logo fade d1" src="img/logo.png" alt="M&amp;M Re d’Italia Art">
+  <p class="from fade d2">ha il piacere di invitarLa alla presentazione online</p>
+  <h1 class="caps fade d3"><span>Trilogia<br>Universalis</span></h1>
+  <p class="pillars fade d3">Fede · Cultura · Scienza</p>
+  <p class="from fade d3" style="margin-top:4px">e presentazione del nuovo CRM aziendale</p>
+  <div class="orn fade d4"><i></i><b></b><i></i></div>
+  <p class="motto fade d4">I caposaldi della cultura che hanno formato la coscienza occidentale.</p>
+  <p class="lead fade d4">Capolavori che riaffiorano dal passato attraverso l’unicità delle botteghe d’arte e dei maestri artigiani italiani: le nuove opere della campagna <strong>Arte Italia Nostra 2026/2027</strong>, presentate dal relatore <strong>Gerardo Giurin</strong>. Nell’occasione verrà presentato anche il <strong>nuovo CRM aziendale</strong>.</p>
+  <div class="vid fade d5"><video id="teaser" src="video/teaser.mp4" poster="img/poster.jpg" controls playsinline preload="metadata"></video></div>
+  <div class="when fade d5">
+   <div><small>giorno</small><span>Lunedì 23</span><small>novembre 2026</small></div>
+   <div><small>orario</small><span>ore 10:00</span><small>ora italiana</small></div>
+   <div><small>piattaforma</small><span>Zoom</span><small>online</small></div>
+  </div>
+  <p class="count" id="count" aria-live="polite"></p>
+ </header>
+
+ <section class="c" id="trilogia">
+  <div class="orn"><i></i><b></b><i></i></div>
+  <h2 class="script">I tre pilastri della Pace tra i popoli</h2>
+  <p class="motto" style="margin-top:0">le tre opere alle radici della civiltà europea</p>
+  <p class="pillars" style="margin:0 0 6px">I tre archetipi della cultura occidentale, le radici europee.</p>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
+  <div class="crm">
+   <b>Presentazione del nuovo CRM aziendale</b>
+   <span>Nella stessa presentazione verrà illustrato il nuovo CRM della rete, lo strumento che accompagnerà il lavoro di tutta la campagna 2026/2027.</span>
+   <div class="row"><a class="btn" href="crm/">▶ Guarda l’anteprima del nuovo CRM</a></div>
+  </div>
+ </section>
+
+ <section class="c" id="zoom">
+  <div class="orn"><i></i><b></b><i></i></div>
+  <h2 class="script">Come partecipare</h2>
+  <div class="zoom">
+   <a class="btn" id="zoomlink" href="https://us06web.zoom.us/j/85161515711?pwd=zMj8YGvq8DYDLOyniOW4DbUuDIXB89.1" target="_blank" rel="noopener">Entra nella riunione Zoom</a>
+   <div class="ids"><span>ID riunione <b>851 6151 5711</b></span><span>Codice d’accesso <b>046140</b></span></div>
+   <div class="row">
+    <button class="ghost" type="button" id="copyz">Copia link e codici</button>
+    <a class="ghost" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Trilogia%20Universalis%20%E2%80%93%20Arte%20Italia%20Nostra%202026%2F2027&amp;dates=20261123T090000Z%2F20261123T103000Z&amp;details=Relatore%3A%20Gerardo%20Giurin%20%E2%80%93%20Re%20d%27Italia%20Art%0AZoom%3A%20https%3A%2F%2Fus06web.zoom.us%2Fj%2F85161515711%3Fpwd%3DzMj8YGvq8DYDLOyniOW4DbUuDIXB89.1%0AID%3A%20851%206151%205711%20%E2%80%93%20Codice%3A%20046140&amp;location=Zoom">Aggiungi al calendario</a>
+   </div>
+   <p class="count" id="copymsg"></p>
+  </div>
+  <p style="margin:18px 0 0;font-style:italic;color:var(--soft)">Con gentilezza Le chiediamo di</p>
+  <ul class="notes">
+   <li>essere <b style="color:var(--gold2)">puntuale</b>: Le consigliamo di collegarsi 5–10 minuti prima delle 10:00;</li>
+   <li>collegarsi da un <b style="color:var(--gold2)">ambiente riservato</b> e tranquillo;</li>
+   <li>disporre di una <b style="color:var(--gold2)">buona connessione internet</b>, meglio se da computer;</li>
+   <li>tenere il microfono disattivato durante la presentazione e accendere la videocamera, se possibile.</li>
+  <li>coordinarsi con il <b style="color:var(--gold2)">telemarketing</b> per l’<b style="color:var(--gold2)">orario di inizio dell’agenda appuntamenti</b> di lunedì 23 novembre.</li>
+  </ul>
+ </section>
+
+ <section class="c" id="rsvp">
+  <div class="orn"><i></i><b></b><i></i></div>
+  <h2 class="script">Conferma di partecipazione</h2>
+  <form id="f" novalidate>
+   <label class="f">Nome<input type="text" id="nome" autocomplete="given-name" required></label>
+   <label class="f">Cognome<input type="text" id="cognome" autocomplete="family-name" required></label>
+   <label class="check"><input type="checkbox" id="ok"><span>Confermo la mia partecipazione alla presentazione di lunedì 23 novembre 2026 alle ore 10:00.</span></label>
+   <label class="check"><input type="checkbox" id="priv"><span>Acconsento all’uso di nome e cognome da parte di M&amp;M Re d’Italia Art al solo fine di gestire la mia partecipazione.</span></label>
+   <p class="err" id="err" role="alert"></p>
+   <div class="c"><button class="btn" type="submit">Conferma la partecipazione</button></div>
+  </form>
+  <div class="done" id="done" aria-live="polite">
+   <p class="script" style="font-size:36px">Grazie</p>
+   <p id="donetxt"></p>
+   <p style="font-size:16px;color:var(--soft)">Per completare la registrazione invii la conferma con WhatsApp:</p>
+   <div class="row"><a class="btn" id="wa" href="#" target="_blank" rel="noopener">Invia la conferma a Gerardo Giurin</a></div>
+   <div class="row"><button class="ghost" type="button" id="copym">Copia il messaggio</button></div>
+   <p class="count" id="copymsg2"></p>
+  </div>
+ </section>
+
+ <div class="orn"><i></i><b></b><i></i></div>
+ <p class="c script" style="font-size:clamp(30px,7vw,42px);margin:0">Grazie</p>
+ <p class="c lead" style="margin-top:6px">Ringraziamo anticipatamente per l’adesione alla presentazione aziendale.</p>
+ <p class="foot">M&amp;M Re d’Italia Art · Trilogia Universalis · Arte Italia Nostra 2026/2027</p>
+</main>
+</div>
+
+<script>
+{
+const ORG_PHONE = "393298589624"; // Gerardo Giurin // numero WhatsApp dell'organizzatore, solo cifre con prefisso (es. 393331234567)
+const P = [
+ {k:"Fede", short:"Icones Bibliae", t:"Icones Bibliae", s:"La Bibbia della speranza · Manoscritto W.106 · Oxford, c. 1250",
+  imgs:[["img/icones.jpg","Dio crea il firmamento (fol. 1r)"],["img/icones2.jpg","La coperta ricamata in filo d’oro"],["img/icones3.jpg","Pentecoste e Giudizio Universale"]],
+  d:"Il ciclo di 34 miniature a piena pagina dipinto da William de Brailes, il solo miniatore inglese non monastico del Duecento che firmava le proprie opere.",
+  st:"«W. de Brailes qui me depeint»: in un Giudizio Universale l’artista si ritrae tra le anime salvate, con il suo nome su un cartiglio. Un esemplare della Bibbia della speranza è stato donato a Papa Francesco.",
+  sp:["599 esemplari numerati","Formato 9,8 × 13,2 cm","24 fogli, 34 miniature","Oro in lamina, doppio passaggio per la bulinatura","Carta pergamena trattata a mano","Cucitura artigianale su corde","Velluto di seta rossa ricamato in filo d’oro","Taglio dorato, Commentario e cofanetto"],
+  m:"The Walters Art Museum, Baltimora · Musée Marmottan Monet, Parigi"},
+ {k:"Cultura", short:"Divina Commedia Marciana", t:"Divina Commedia Marciana", s:"Dante Alighieri · Cod. It. IX, 276 (=6902) · Veneto, XIV secolo",
+  imgs:[["img/divina.jpg","Dante e Beatrice nel cielo stellato"],["img/divina2.jpg","Dante, Virgilio e Stazio"],["img/divina3.jpg","Una carta con il timbro francese"]],
+  d:"Tra le più antiche Commedie miniate conosciute, realizzata a pochi decenni dalla morte del poeta: 213 scene illustrate e 86 capilettera fogliati, opera di almeno tre mani.",
+  st:"Nel 1797 Napoleone la portò a Parigi, dove ricevette i timbri rossi della Bibliothèque Nationale. Dopo il Congresso di Vienna tornò a Venezia e nel 1816 entrò alla Marciana.",
+  sp:["299 esemplari, tiratura limitata e numerata","Formato 28 × 43 cm","156 pagine, 135 miniate","Stampa fine art, foglia d’oro in lamina","Carta pergamena trattata a mano","Pelle fiore a concia naturale","Legatura e cucitura a mano","Collezione La Biblioteca di Dante®"],
+  m:"Biblioteca Nazionale Marciana, Venezia"},
+ {k:"Scienza", short:"Leonardo da Vinci", t:"Et Archimedaeo Ingenio Notissimus", s:"Leonardo da Vinci · Imago, 2020",
+  imgs:[["img/leonardo.jpg","Dama con l’ermellino (particolare)"],["img/leonardo2.jpg","L’Uomo vitruviano"],["img/leonardo3.jpg","Il volume aperto"]],
+  d:"L’immagine di Leonardo tra analisi storica e indagine computazionale, con saggi di Louis Godart, Giovanna Perini Folesani, Marco Gaiani e Berta Martini.",
+  st:"Il titolo riprende l’elogio di Pomponio Gaurico (1504): Leonardo era celebre per un ingegno pari a quello di Archimede, che in quegli anni studiava con passione.",
+  sp:["199 esemplari","Grande formato 50 × 45 cm","192 pagine, stampa fine art","Velluto con cantonali in ottone argentato","Le opere pittoriche certe, anche in dettaglio","I disegni più celebri"],
+  m:"Volume d’arte Imago · La Nobiltà del Facsimile"}
+];
+const tabs = document.getElementById("tabs"), panel = document.getElementById("panel");
+tabs.innerHTML = P.map((p,i) => `<button class="tab" role="tab" id="tab-${i}" aria-selected="${i===0}" data-i="${i}"><b>${p.k}</b><em>${p.short}</em></button>`).join("");
+let cur = 0, img = 0;
+const show = (i, j) => {
+ cur = i; img = j || 0; const p = P[i];
+ tabs.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", String(+b.dataset.i === i)));
+ panel.setAttribute("aria-labelledby", "tab-" + i);
+ panel.innerHTML = `<div class="gal"><div class="main"><div><img src="${p.imgs[img][0]}" alt="${p.imgs[img][1]}"></div></div><div class="thumbs">${p.imgs.map((m,k) => `<button type="button" aria-pressed="${k===img}" data-k="${k}" aria-label="${m[1]}"><img src="${m[0]}" alt=""></button>`).join("")}</div></div>
+ <p class="sub" style="margin-top:8px;text-align:center">${p.imgs[img][1]}</p>
+ <h3><u class="pk">${p.k}</u> · ${p.t}</h3><p class="sub">${p.s}</p><p>${p.d}</p><p class="story">${p.st}</p><ul>${p.sp.map(x => `<li>${x}</li>`).join("")}</ul><p class="mus">Originale custodito presso: ${p.m}</p>`;
+ panel.style.animation = "none"; void panel.offsetWidth; panel.style.animation = "";
+};
+tabs.addEventListener("click", e => { const b = e.target.closest(".tab"); if (b) show(+b.dataset.i, 0); });
+panel.addEventListener("click", e => { const b = e.target.closest(".thumbs button"); if (b) show(cur, +b.dataset.k); });
+show(0, 0);
+let auto = setInterval(() => show(cur, (img + 1) % P[cur].imgs.length), 6000);
+[tabs, panel].forEach(el => el.addEventListener("pointerdown", () => { clearInterval(auto); auto = null; }, {once:true}));
+
+const START = Date.UTC(2026, 10, 23, 9, 0, 0);
+const count = document.getElementById("count");
+const tick = () => {
+ const ms = START - Date.now();
+ if (ms <= 0 && ms > -90 * 60000) { count.textContent = "La presentazione è in corso: entri ora su Zoom."; return; }
+ if (ms <= 0) { count.textContent = "La presentazione si è svolta il 23 novembre 2026."; return; }
+ const d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60;
+ count.textContent = "Mancano " + (d ? d + (d === 1 ? " giorno, " : " giorni, ") : "") + h + (h === 1 ? " ora e " : " ore e ") + m + (m === 1 ? " minuto" : " minuti");
+};
+tick(); setInterval(tick, 30000);
+
+const copy = async (text, out) => {
+ try { await navigator.clipboard.writeText(text); out.textContent = "Copiato."; }
+ catch (e) { out.textContent = "Copia non riuscita: tenga premuto sul testo per copiarlo."; }
+ setTimeout(() => { out.textContent = ""; }, 4000);
+};
+document.getElementById("copyz").addEventListener("click", () => copy("Zoom: " + document.getElementById("zoomlink").href + "\nID riunione: 851 6151 5711\nCodice d’accesso: 046140", document.getElementById("copymsg")));
+
+let msg = "";
+const f = document.getElementById("f"), err = document.getElementById("err");
+try { const s = JSON.parse(localStorage.getItem("rsvp-ain") || "{}"); if (s.n) f.nome.value = s.n; if (s.c) f.cognome.value = s.c; } catch (e) {}
+f.addEventListener("submit", ev => {
+ ev.preventDefault();
+ const n = f.nome.value.trim(), c = f.cognome.value.trim();
+ if (!n || !c) { err.textContent = "Inserisca nome e cognome."; return; }
+ if (!f.ok.checked) { err.textContent = "Spunti la casella di conferma della partecipazione."; return; }
+ if (!f.priv.checked) { err.textContent = "Per registrarsi è necessario il consenso all’uso dei dati."; return; }
+ err.textContent = "";
+ try { localStorage.setItem("rsvp-ain", JSON.stringify({n, c})); } catch (e) {}
+ msg = "Buongiorno, sono " + n + " " + c + " e confermo la mia partecipazione alla presentazione online «Trilogia Universalis – Arte Italia Nostra 2026/2027» di lunedì 23 novembre 2026 alle ore 10:00 su Zoom.";
+ const base = ORG_PHONE ? "https://wa.me/" + ORG_PHONE : "https://wa.me/";
+ document.getElementById("wa").href = base + "?text=" + encodeURIComponent(msg);
+ document.getElementById("donetxt").textContent = n + " " + c + ", la aspettiamo lunedì 23 novembre alle ore 10:00.";
+ f.style.display = "none";
+ const done = document.getElementById("done"); done.classList.add("on"); done.scrollIntoView({block:"center"});
+});
+document.getElementById("copym").addEventListener("click", () => copy(msg, document.getElementById("copymsg2")));
+}
+</script>
+</body>
+</html>

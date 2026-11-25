@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuovo CRM · Re d’Italia Art</title>
+<meta property="og:title" content="Nuovo CRM della rete · Re d’Italia Art">
+<meta property="og:description" content="Lunedì 23 novembre, ore 10:00, su Zoom. Guardi l’anteprima.">
+<meta property="og:image" content="https://trilogia-universalis.netlify.app/crm/poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#3a0c14;--ink:#f4ead6;--gold:#d9b15f;--gold2:#f4dc9a;--soft:#d9c3a0;--line:rgba(217,177,95,.4)}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:radial-gradient(ellipse at 50% 0%,#7a1a2a 0%,#4a0f1a 45%,#1e050a 100%) fixed,var(--bg);color:var(--ink);font:18px/1.55 "Cormorant Garamond",Georgia,serif;overflow-x:clip}
+.wrap{max-width:560px;margin:0 auto;padding:28px 18px 50px;text-align:center}
+.logo{width:min(220px,60%);display:block;margin:0 auto}
+h1{font-family:"Pinyon Script",cursive;font-weight:400;font-size:clamp(40px,11vw,60px);line-height:1.05;margin:10px 0 0;color:var(--gold2)}
+.sub{font-style:italic;color:var(--soft);margin:4px 0 0;font-size:20px}
+.orn{display:flex;align-items:center;justify-content:center;gap:10px;margin:18px auto}
+.orn i{height:1px;width:90px;background:linear-gradient(90deg,transparent,var(--gold))}.orn i:last-child{transform:scaleX(-1)}
+.orn b{width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+.vid{max-width:340px;margin:0 auto;padding:5px;background:linear-gradient(135deg,#f6dc8e,#a8792c 30%,#fbe7a6 50%,#8a5f20 75%,#e9c672);box-shadow:0 12px 30px rgba(0,0,0,.6)}
+.vid video{display:block;width:100%;aspect-ratio:9/16;background:#000}
+.when{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:22px 0 8px}
+.when div{background:#2a0810;padding:12px 6px}
+.when small{display:block;font-size:14px;color:var(--soft);font-style:italic}
+.when span{display:block;font-size:22px;color:var(--gold2);font-weight:600;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 26px;font:600 18px/1.2 "Cormorant Garamond",serif;color:#2a0810;background:linear-gradient(180deg,#f6e0a0,#d2a650 55%,#b08333);box-shadow:0 6px 18px rgba(0,0,0,.45);text-decoration:none;border:0;cursor:pointer}
+.ghost{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:1px solid var(--line);background:transparent;color:var(--gold2);font:500 16px "Cormorant Garamond",serif;text-decoration:none;cursor:pointer}
+.ids{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin:14px 0 4px}
+.ids b{color:var(--gold2)}
+.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
+.notes{list-style:none;padding:0;margin:14px auto 0;text-align:left;max-width:30em}
+.notes li{position:relative;padding:7px 0 7px 26px;border-bottom:1px solid rgba(217,177,95,.2);font-size:17px}
+.notes li:before{content:"";position:absolute;left:6px;top:16px;width:7px;height:7px;background:var(--gold);transform:rotate(45deg)}
+.msg{font-size:15px;color:var(--soft);font-style:italic;min-height:1.4em}
+.foot{margin-top:26px;color:var(--soft);font-style:italic;font-size:15px}
+.btn:focus-visible,.ghost:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <img class="logo" src="../img/logo.png" alt="M&amp;M Re d’Italia Art">
+ <p class="sub">Gentile Art Dealer, Le presentiamo in anteprima</p>
+ <h1>il nuovo CRM della rete</h1>
+ <div class="orn"><i></i><b></b><i></i></div>
+ <div class="vid"><video src="crm.mp4" poster="poster.jpg" controls playsinline preload="metadata"></video></div>
+ <p style="margin:18px 0 0">Il nuovo CRM verrà presentato <b style="color:var(--gold2)">lunedì 23 novembre alle ore 10:00 su Zoom</b>, insieme alle opere della Trilogia Universalis.</p>
+ <div class="row" style="margin-top:18px"><a class="btn" href="../">Torna all’invito</a></div>
+ <p class="foot">Grazie anticipatamente per l’adesione · M&amp;M Re d’Italia Art</p>
+</div>
+</body>
+</html>
